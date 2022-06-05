@@ -14,20 +14,21 @@ import { Formik, FormikValues } from "formik";
 import axios from "axios";
 import { IFact } from "../SearchFact";
 import CardFacts from "../CardFacts";
+import SearchListFactsForm from "../SearchListFactsForm";
 
-interface IParamsFacts {
-  max_length?: number;
-  limit?: number;
+export interface IParamsFacts {
+  max_length?: number | null;
+  limit?: number | null;
 }
 
 export function SearchFact() {
   const [facts, setFacts] = useState<Array<IFact> | null>(null);
-  const [paramsFacts, setParamsFacts] = useState<IParamsFacts | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number | null>(null);
-  const toast = useToast();
-  const loaderRef = useRef(null);
+  const [paramsFacts, setParamsFacts] = useState<IParamsFacts | null>(null);
   const [hasEndingPosts, setHasEndingPosts] = useState<boolean>(false);
+
+  const loaderRef = useRef(null);
 
   useEffect(() => {
     if (facts) {
@@ -72,78 +73,18 @@ export function SearchFact() {
       if (!hasEndingPosts) {
         handleResquest();
       }
-      return;
     }
   }, [currentPage]);
 
-  const onSubmit = (values: FormikValues) => {
-    setLoading(true);
-    axios
-      .get("https://catfact.ninja/facts", {
-        params: {
-          max_length: values.length,
-          limit: values.limit,
-          page: 1,
-        },
-      })
-      .then((res) => {
-        setParamsFacts({
-          max_length: values.length,
-          limit: values.limit,
-        });
-        setHasEndingPosts(false);
-        setCurrentPage(1);
-        setFacts(res.data.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        toast({
-          status: "error",
-          title: err.message,
-          position: "top-right",
-        });
-        setLoading(false);
-      });
-  };
-
   return (
     <div>
-      <Formik initialValues={{ length: "", limit: "" }} onSubmit={onSubmit}>
-        {({ values, handleChange, handleBlur, handleSubmit }) => (
-          <form onSubmit={handleSubmit}>
-            <FormControl id="length" isRequired>
-              <Input
-                type="number"
-                name="length"
-                placeholder="Tamanho do fato"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.length}
-              />
-            </FormControl>
-            <FormControl id="limit" marginTop="1vh" isRequired>
-              <Input
-                type="number"
-                name="limit"
-                placeholder="Quantidade de fatos"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.limit}
-              />
-            </FormControl>
-            <Flex justifyContent="end">
-              <Button
-                marginTop="1vh"
-                size="sm"
-                colorScheme="teal"
-                type="submit"
-              >
-                Buscar
-              </Button>
-            </Flex>
-          </form>
-        )}
-      </Formik>
+      <SearchListFactsForm
+        setFacts={setFacts}
+        setLoading={setLoading}
+        setParamsFacts={setParamsFacts}
+        setHasEndingPosts={setHasEndingPosts}
+        setCurrentPage={setCurrentPage}
+      />
       {loading ? (
         <Center>
           <CircularProgress isIndeterminate color="orange.400" />
@@ -151,7 +92,7 @@ export function SearchFact() {
       ) : (
         <Box>
           {facts && (
-            <Box height="100px">
+            <Box height="100px" marginTop="5px">
               {facts?.map((f, index) => (
                 <CardFacts key={`${f.fact}-${index}`} factProp={f} />
               ))}
