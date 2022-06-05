@@ -13,6 +13,6 @@ const Template: ComponentStory<typeof CardFacts> = (args) => (
 export const Complete = Template.bind({});
 Complete.args = {
   factProp: {
-    fact: "Testando",
+    fact: "There are approximately 100 breeds of cat.",
   },
 };
