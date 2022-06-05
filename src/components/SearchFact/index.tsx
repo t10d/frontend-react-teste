@@ -12,14 +12,6 @@ export function SearchFact() {
   const [facts, setFacts] = useState<Array<IFact> | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const validateLength = (value: any) => {
-    let error;
-    if (!value) {
-      error = "É preciso informar um tamanho!";
-    }
-    return error;
-  };
-
   return (
     <div>
       <SearchFactForm
