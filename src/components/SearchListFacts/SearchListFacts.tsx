@@ -55,6 +55,7 @@ export function SearchFact() {
         });
 
         if (data?.next_page_url === null) {
+          setFacts([...(facts || []), ...data.data]);
           setHasEndingPosts(true);
           return;
         }
