@@ -1,8 +1,8 @@
 import React from "react";
 import { Box, Flex, Text } from "@chakra-ui/react";
-import { IFact } from "../SearchFact";
+import { IFact } from "../SearchFact/SearchFact";
 
-export function Index({ factProp }: { factProp: IFact }) {
+export function CardFacts({ factProp }: { factProp: IFact }) {
   const { fact } = factProp;
   return (
     <Box>
@@ -26,4 +26,4 @@ export function Index({ factProp }: { factProp: IFact }) {
   );
 }
 
-export default Index;
+export default CardFacts;

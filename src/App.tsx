@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Flex, Grid, GridItem, Heading, Image } from "@chakra-ui/react";
-import { Header } from "./components/Header";
-import TabChooseSearchFacts from "./components/TabChooseSearchFacts";
+import { Header } from "./components/Header/Header";
+import TabChooseSearchFacts from "./components/TabChooseSearchFacts/TabChooseSearchFacts";
 
 function App() {
   return (

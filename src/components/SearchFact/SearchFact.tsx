@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Box, Center, CircularProgress } from "@chakra-ui/react";
-import CardFacts from "../CardFacts";
-import SearchFactForm from "../SearchFactForm";
+import CardFacts from "../CardFacts/CardFacts";
+import SearchFactForm from "../SearchFactForm/SearchFactForm";
 
 export interface IFact {
-  fact?: "string";
+  fact: string;
   length?: number;
 }
 

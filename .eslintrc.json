@@ -34,7 +34,20 @@
                 "tsx": "never"
             }
         ],
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+        "react/react-in-jsx-scope": "off",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".tsx"] }],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "**/*.stories.*",
+                    "**/.storybook/**/*.*"
+                ],
+                "peerDependencies": true
+            }
+        ],
+        "react/function-component-definition": "off",
+        "react/jsx-props-no-spreading": "off"
     },
     "settings": {
         "import/resolver": {

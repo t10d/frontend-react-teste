@@ -1,7 +1,7 @@
 import React from "react";
 import { Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
-import SearchFact from "../SearchFact";
-import SearchListFacts from "../SearchListFacts";
+import SearchFact from "../SearchFact/SearchFact";
+import SearchListFacts from "../SearchListFacts/SearchListFacts";
 
 export function TabChooseSearchFacts() {
   return (

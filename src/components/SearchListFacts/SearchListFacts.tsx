@@ -1,20 +1,10 @@
 /* eslint-disable */
 import React, { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Button,
-  Center,
-  CircularProgress,
-  Flex,
-  FormControl,
-  Input,
-  useToast,
-} from "@chakra-ui/react";
-import { Formik, FormikValues } from "formik";
+import { Box, Center, CircularProgress } from "@chakra-ui/react";
 import axios from "axios";
-import { IFact } from "../SearchFact";
-import CardFacts from "../CardFacts";
-import SearchListFactsForm from "../SearchListFactsForm";
+import { IFact } from "../SearchFact/SearchFact";
+import CardFacts from "../CardFacts/CardFacts";
+import SearchListFactsForm from "../SearchListFactsForm/SearchListFactsForm";
 
 export interface IParamsFacts {
   max_length?: number | null;

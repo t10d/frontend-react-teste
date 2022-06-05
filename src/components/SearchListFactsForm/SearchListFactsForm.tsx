@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Button,
-  ButtonGroup,
   Flex,
   FormControl,
   Input,
@@ -9,31 +8,37 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { IFact } from "../SearchFact";
+import { IFact } from "../SearchFact/SearchFact";
+import { IParamsFacts } from "../SearchListFacts/SearchListFacts";
 
-export function SearchFactForm({
-  facts,
+export function SearchListFactsForm({
   setFacts,
   setLoading,
+  setParamsFacts,
+  setHasEndingPosts,
+  setCurrentPage,
 }: {
-  facts: IFact[] | null;
   setFacts: React.Dispatch<React.SetStateAction<IFact[] | null>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setParamsFacts: React.Dispatch<React.SetStateAction<IParamsFacts | null>>;
+  setHasEndingPosts: React.Dispatch<React.SetStateAction<boolean>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number | null>>;
 }) {
-  const [length, setLength] = useState<number | null>(null);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [hasEndingPosts, setHasEndingPosts] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
   const toast = useToast();
+  const [error, setError] = useState<boolean>(false);
+  const [length, setLength] = useState<number | null>(null);
+  const [limit, setLimit] = useState<number | null>(null);
 
   const onChangeLength = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-
-    setCurrentPage(1);
     setError(false);
-    setHasEndingPosts(false);
-
     setLength(parseInt(event.target.value, 10));
+  };
+
+  const onChangeLimit = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    setError(false);
+    setLimit(parseInt(event.target.value, 10));
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -47,29 +52,18 @@ export function SearchFactForm({
       .get("https://catfact.ninja/facts", {
         params: {
           max_length: length,
-          limit: 1,
-          page: currentPage,
+          limit,
+          page: 1,
         },
       })
       .then((res) => {
-        if (currentPage === 1) {
-          setFacts(res.data.data);
-          setCurrentPage(currentPage + 1);
-          if (res.data.next_page_url === null) {
-            setHasEndingPosts(true);
-            setLoading(false);
-            return;
-          }
-          setLoading(false);
-          return;
-        }
-        setFacts([...(facts || []), ...res.data.data]);
-        setCurrentPage(currentPage + 1);
-        if (res.data.next_page_url === null) {
-          setHasEndingPosts(true);
-          setLoading(false);
-          return;
-        }
+        setParamsFacts({
+          max_length: length || null,
+          limit: limit || null,
+        });
+        setHasEndingPosts(false);
+        setCurrentPage(1);
+        setFacts(res.data.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -81,14 +75,6 @@ export function SearchFactForm({
         setLoading(false);
       });
   };
-
-  const onReset = () => {
-    setCurrentPage(1);
-    setLength(0);
-    setFacts(null);
-    setHasEndingPosts(false);
-  };
-
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <FormControl id="length" isRequired>
@@ -99,23 +85,26 @@ export function SearchFactForm({
           onChange={(event) => onChangeLength(event)}
           value={length || ""}
         />
+      </FormControl>
+      <FormControl id="limit" marginTop="1vh" isRequired>
+        <Input
+          type="number"
+          name="limit"
+          placeholder="Quantidade de fatos"
+          onChange={(event) => onChangeLimit(event)}
+          value={limit || ""}
+        />
         {error && (
           <Text color="red">O tamanho precisa ser maior ou igual a 20</Text>
         )}
       </FormControl>
-
       <Flex justifyContent={["center", "center", "end"]}>
-        <ButtonGroup marginTop="1vh" gap="1">
-          <Button type="button" onClick={onReset}>
-            Resetar
-          </Button>
-          <Button colorScheme="teal" type="submit" disabled={hasEndingPosts}>
-            Buscar
-          </Button>
-        </ButtonGroup>
+        <Button marginTop="1vh" colorScheme="teal" type="submit">
+          Buscar
+        </Button>
       </Flex>
     </form>
   );
 }
 
-export default SearchFactForm;
+export default SearchListFactsForm;
