@@ -102,6 +102,9 @@ export function SearchFactForm({
         {error && (
           <Text color="red">O tamanho precisa ser maior ou igual a 20</Text>
         )}
+        {hasEndingPosts && (
+          <Text color="text">Você chegou no fim dos fatos desse tamanho!</Text>
+        )}
       </FormControl>
 
       <Flex justifyContent={["center", "center", "end"]}>
