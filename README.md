@@ -16,7 +16,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * StoryBook
 * Docker e DockerCompose
 
-## O que funciona
+## :heavy_check_mark: O que funciona
 
 * Utilizar React e Typescript;
 * Utilizar Chakra-UI;
@@ -28,20 +28,22 @@ As seguintes ferramentas foram usadas na construção do projeto:
 * Uma pequena documentação com StoryBook;
 * Docker e DockerCompose;
 
-## Maiores desafios
+## :orange_book: Maiores desafios
 
 * Primeira vez utilizando StoryBook, docker e docker-compose e que fiz infinite scroll;
 * Pouca pratica no Chakra-UI;
 
-## Em desenvolvimento
+## :construction: Em desenvolvimento
 
 - [ ] MakeFile
 - [ ] Testes
 
-## Demo
+## :cat2: Demo
 https://felipetestet10.surge.sh
 
-## Comandos
+## :art: Imagens
+
+## :checkered_flag: Comandos
 
 ```bash
 # Iniciar um container
