@@ -1,69 +1,60 @@
-<h1 align="center">
-   Front-end Engineer
-</h1>
-<p align="center">
-    <em>
-    Olá Dev!
-
-A T10 está contratando novos talentos para compor o seu time de desenvolvedores e para isso precisamos avaliar as habilidades técnicas dos candidatos na solução de problemas.
-    </em>
-</p>
+<h1 align="center" id="top">Teste para a T10</h1>
 
 
-## 🤔 Problema
+<h2 id="sobre">:notebook: Sobre </h2>
 
-Paulo é um desenvolvedor Frontend e está trabalhando em um projeto pessoal que envolve fatos curiosos sobre gatinhos de estimação. Paulo encontrou uma API pública que lhe retorna os fatos curiosos, mas gostaria de exercitar duas maneiras de interagir com as listagens de fatos.
+<p align="center">:rocket: Bem vindo ao site Cats! Esse site foi criado para o processo seletivo da T10 onde envolve um projeto pessoal para o Paulo sobre curiosidades de gatinhos de estimação </p>
 
----
+## 🛠 Tecnologias
 
-## 🚀 Escopo 
+As seguintes ferramentas foram usadas na construção do projeto:
 
-Para ajudar Paulo a desenvolver seu projeto, ele precisa que você elabore um frontend que ele possa testar e oferecer aos seus amigos para que os mesmos opinem sobre qual é a melhor maneira de interagir com o sistema. Em seu planejamento, ele imagina um sistema com 2 partes.
+* React.js
+* Typescript
+* Chakra-UI
+* Back-End API pública: https://catfact.ninja
+* StoryBook
+* Docker e DockerCompose
 
-O backend será composto pela API pública: https://catfact.ninja
+## O que funciona
 
-1. Na primeira parte o usuário busca fato por fato para compor a listagem. 
-2. Na segunda parte o usário busca uma listagem pronta de fatos. Porém, a página terá que ter scroll infinito.
-3. Em ambas as visualizações, os itens da lista viram CARDs na visualização mobile.
+* Utilizar React e Typescript;
+* Utilizar Chakra-UI;
+* Na primeira parte o usuário busca fato por fato para compor a listagem;
+* Na segunda parte o usário busca uma listagem pronta de fatos. Porém, a página terá que ter scroll infinito.;
+* Em ambas as visualizações, os itens da lista viram CARDs na visualização mobile;
+* Em ambas as listas haverá uma limitação na busca por quantidade de caracteres;
+* Responsivo;
+* Uma pequena documentação com StoryBook;
+* Docker e DockerCompose;
 
+## Maiores desafios
 
+* Primeira vez utilizando StoryBook, docker e docker-compose e que fiz infinite scroll;
+* Pouca pratica no Chakra-UI;
 
-<p align="center">
+## Em desenvolvimento
 
-![alt text](https://i.imgur.com/BuzXLNi.png)
-<em>Obs.: Imagem de exemplo. Detalhes abaixo.</em>
-</p>
+- [ ] MakeFile
+- [ ] Testes
 
----
+## Demo
+https://felipetestet10.surge.sh
 
-## 🔎 Detalhes
+## Comandos
 
-- Em ambas as listas haverá uma limitação na busca por quantidade de caracteres.
-- Considere o sistema sendo responsivo.
-- <b>Contanto que o escopo seja seguido, os detalhes de layout podem ficar à sua escolha. A imagem para representar o sistema acima é meramente ilustrativa não sendo necessário que a ordem dos componentes, fonte, cores, localização seja seguida à risca. Use a criatividade para fazer uma tela visualmente bonita! :smile:</b>
+```bash
+# Iniciar um container
+$ yarn dev
+# ou
+$ docker-compose -f docker-compose.dev.yml up
 
----
+# Instalar as dependências
+$ yarn install
 
-## 🧱 Requisitos
+# Para iniciar o projeto
+$ yarn start
 
-O backend da aplicação deve ser implementado com os seguintes requisitos:
-
-- Utilizar React.js com Typescript.
-- Utilizar [chakra-ui](https://chakra-ui.com/).
-
----
-
-## ⭐️ Isso aqui é um PLUS!
-
-1. Documentações são muito bem vindas.
-2. Um README bem escrito facilita o entendimento do projeto.
-3. A utilização de Docker e docker-compose é um excelente aditivo.
-4. A criação de um Makefile para auxiliar nos comandos essenciais para rodar o projeto é show!
-5. Testes!
-
----
-
-## 🎁 Submissão
-
-1. A solução implementada deve ser disponibilizada através de um fork e um pull request neste repositório.
-2. Para agilizar o processo, por favor avise-nos sobre a submissão do projeto através do nosso contato contigo e/ou através do email it@t10.digital 
+# Para ver a documentação do StoryBook
+$ yarn storybook
+```
