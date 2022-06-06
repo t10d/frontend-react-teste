@@ -65,5 +65,5 @@ O backend da aplicação deve ser implementado com os seguintes requisitos:
 
 ## 🎁 Submissão
 
-1. A solução implementada deve ser disponibilizada através de um fork e um pull request neste repositório.
+1. A solução implementada deverá ser disponibilizada através de um link público de repositório aqui do Github enviado à pessoa que entrou em contato contigo.
 2. Para agilizar o processo, por favor avise-nos sobre a submissão do projeto através do nosso contato contigo e/ou através do email it@t10.digital 
