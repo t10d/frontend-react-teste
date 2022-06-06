@@ -41,7 +41,6 @@ As seguintes ferramentas foram usadas na construção do projeto:
 ## :cat2: Demo
 https://felipetestet10.surge.sh
 
-## :art: Imagens
 
 ## :checkered_flag: Comandos
 
@@ -60,3 +59,7 @@ $ yarn start
 # Para ver a documentação do StoryBook
 $ yarn storybook
 ```
+## :art: Imagens
+[Primeira](https://i.ibb.co/894DWKf/Captura-de-tela-de-2022-06-06-00-41-22.png)
+[Mobile](https://i.ibb.co/Kr0cM1r/Captura-de-tela-de-2022-06-06-00-46-48.png)
+[StoryBook](https://i.ibb.co/yQLKTLJ/Captura-de-tela-de-2022-06-06-00-48-52.png)
